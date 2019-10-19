@@ -1,0 +1,1 @@
+Run 1Rankings to find list of top X teams. Then 2Matches produces matches.csv and players.csv, which contains only necessary data.

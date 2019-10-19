@@ -1,0 +1,5 @@
+rad double counted matches due to a matchID search of players.csv returning the entire match, not just a single map. combatting this by dropping a result if it is exactly the same as the previous one. can be properly fixed by comparing maps
+Currently corw is against COs, but other features like rad and radstd are only against recent matches. should try including co and non-co versions of each feature and test predictive power
+Tried calculating fatigue for small span (5 days), not significant. Removing and only using long term fatigue (and renaming it app, for number of appearances on HLTV)
+Consider dropping early samples, as don't have correct app feature
+Fat is calculated from the parsed matchResults, which is much smaller than the unparsed version. Could consider using unparsed version, could make a difference.

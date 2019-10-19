@@ -1,0 +1,9 @@
+Teams not in top X are dropped from matches.csv. How does this affect fatigue? Had ~0.1 Spearman with round win percent.
+
+Potential areas of improvement: map correlations/map as input feature, account for which map in series it is, BO1/B03/B05, etc.
+
+Decide whether to keep Comp and RoD. High correlation between them, Comp is expensive to calculate, but CompSTD is good. Check if RoDSTD correlates with CompSTD. If Comp not kept, can remove a lot from matches.csv
+
+Consider grouping by match, so only the outcome of the entire BO3/BO5 is predicted. So BO1/3/5 would also be a feature, and each sample is a single match (not map).
+
+Be careful using df.drop(df[df['days'] == day].index), simply doesn't work. Could be causing bugs elsewhere
