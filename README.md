@@ -16,4 +16,4 @@ Features (to re-write):
 - Average HLTV 2.0 ratings over all common opponents
 - Average percentage of rounds won in last ~60 days
 
-All database files used have been removed for the public version, as HLTV forbids re-hosting of their (hard-earned) data.
+All database files used have been removed for the public version, except for a sample, as HLTV forbids re-hosting of their (hard-earned) data.
