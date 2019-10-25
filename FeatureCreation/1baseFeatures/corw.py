@@ -6,28 +6,44 @@ myTimer = timer.timer()
 dfmf = pd.read_csv("matches.csv").loc[:,:]
 
 noProcesses = 7
+# for each team, calculates the average rwp against all COs. then creates corw feature which is the difference in average rwp against COs
+# important to average over each CO - otherwise a team playing a lot against a weak CO would gain an advantage
 
-# calculates the round win percentage for each team against all COs, then appends the difference to matchesfeat.csv
+def findcorw(t1id, co1, t2id, co2):
+    temp = dfmf[dfmf['mid'].isin(co1 + co2)]
 
-def findcorw(tid, co1):
-    temp = dfmf[dfmf['mid'].isin(co1)]
-    # team 1 is tid
-    temp1 = temp[temp['t1id'] == tid]
-    # team 2 is tid
-    temp2 = temp[temp['t2id'] == tid]
-    if not temp2.empty:
-        temp2['rw'] = temp2['rw'].apply(lambda x: 1 - x)
+    # convert match IDs to list of CO team IDS
+    cos1 = temp['t1id']
+    cos1 = cos1.loc[(temp['t1id'] != t1id) & (temp['t1id'] != t2id)]
+    cos2 = temp['t2id']
+    cos2 = cos2.loc[(temp['t2id'] != t1id) & (temp['t2id'] != t2id)]
+    cos = pd.concat([cos1, cos2], axis=0)
+    cos = cos.drop_duplicates().tolist()
 
-    return (temp1['rw'].sum() + temp2['rw'].sum()) / (temp1.shape[0] + temp2.shape[0])
+    corw = np.zeros(len(cos))
+    for index, co in enumerate(cos):
+        temp11 = temp.loc[(temp['t1id'] == t1id) & (temp['t2id'] == co)]['rw']
+        temp12 = temp.loc[(temp['t1id'] == co) & (temp['t2id'] == t1id)]['rw']
+        if not temp12.shape[0] == 0:
+            temp12 = temp12.apply(lambda x: 1 - x)
+        t1rw = (sum(temp11) + sum(temp12)) / (temp11.shape[0] + temp12.shape[0])
+
+        temp21 = temp.loc[(temp['t1id'] == t2id) & (temp['t2id'] == co)]['rw']
+        temp22 = temp.loc[(temp['t1id'] == co) & (temp['t2id'] == t2id)]['rw']
+        if not temp22.shape[0] == 0:
+            temp22 = temp22.apply(lambda x: 1 - x)
+        t2rw = (sum(temp21) + sum(temp22)) / (temp21.shape[0] + temp22.shape[0])
+        corw[index] = t1rw - t2rw
+
+    return corw.mean()
 
 
 def wrapper(l):
     if l[2] != l[2]: #easy way to check for nan
         return np.nan
     t1id = l[0]; t2id = l[1]; co1 = eval(l[2]); co2 = eval(l[3])
-    t1rw = findcorw(t1id, co1)
-    t2rw = findcorw(t2id, co2)
-    ret = np.round(t1rw - t2rw, 3)
+    ret = findcorw(t1id, co1, t2id, co2)
+    ret = np.round(ret, 3)
     return ret
 
 import multiprocessing

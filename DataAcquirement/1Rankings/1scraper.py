@@ -7,6 +7,8 @@ import datetime;import pandas as pd
 import cfscrape
 import csv
 
+# scrapes the points of the top X teams on HLTV leaderboard, every month. Used to calculate pd feature.
+
 class MatchScraper:
 
     def __init__(self, link):

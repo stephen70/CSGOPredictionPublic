@@ -9,7 +9,7 @@ p=print;pd.options.mode.chained_assignment = None;pd.set_option('display.width',
 
 myTimer = timer.timer()
 
-interval = 30; span = 90; minMaps = 3; minCOs = 3
+interval = 60; span = 120; minMaps = 5; minCOs = 2
 
 noProcesses = 7
 
@@ -81,11 +81,6 @@ if __name__ == '__main__':
     results = pd.DataFrame(pool.map(wrapper, l), columns=['co1','co2'])
     dfm['co1'] = results['co1']
     dfm['co2'] = results['co2']
-
-    # drop matches with no common opponents
-    # shape = dfm.shape[0]
-    # dftemp = dfm.drop(dfm.loc[dfm['cos'] == []].index)
-    # print("total:", shape, "only with COs:", dftemp.shape[0])
 
     dfm.to_csv("matches.csv", index=False)
     dfm.to_csv("..\\..\\FeatureCreation\\1BaseFeatures\\matches.csv", index=False)

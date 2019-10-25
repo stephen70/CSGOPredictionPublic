@@ -1,0 +1,37 @@
+Balance dataset to 50/50 win rate for team1.
+
+Boxplots of all features
+
+Normalise map component to average rwp of team, to remove its relation to how good a team is
+
+Nicefy github
+
+Remove samples with only few maps played
+
+Change app from iterating through filtered matches to unparsed matches.
+
+Add new features:
+Easy:
+BO1/3/5 dummy variables.
+rad/comp for last 5/10 and 20 days/maps and COs
+Add H2H. Curb no H2H matches by time discounting and dropping NA.
+Average rwp at halftime for last 5/10 and 20 days/maps and COs.
+Start side dummy variable.
+Percentage of rounds won as T/CT for last 5/10 and 20 days/maps and COs.
+Map and interaction term for map/start side
+RWP for games starting as T/CT for last 5/10 and 20 days/maps and COs.
+Interaction term between start side and rwp for games starting as t/ct for last 5/10 and 20 days/maps and COs.
+Change in ranking points over last 20/40/60 days.
+Hard:
+Add average player age.
+Scrape and add betting odds features, see ML tennis paper. They use max odds/average odds/bet365 odds.
+Time since roster change, shouldn't be hard to scrape with only top30. If this is too awkward, simply put in days since a team's creation.
+Clutches for last 5/10 and 20 days/maps and COs
+Pistols won for last 5/10 and 20 days/maps and COs
+rwp after 5/10/15/20/25 rounds in for last 5/10 and 20 days/maps and COs
+Map correlation as in tennis ML paper
+
+Then create interaction terms and STDs.
+
+Feature selection:
+Hyperparameter search by greedy algorithm, using accuracy instead of spearman

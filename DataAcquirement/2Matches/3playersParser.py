@@ -3,9 +3,10 @@ import datetime as dt
 import math
 import numpy as np
 import pandas as pd
-import timer
-pd.set_option('display.width', 10000)
+import timer; pd.set_option('display.width', 10000)
 myTimer = timer.timer()
+
+# drops na values, unranked teams, changes dtypes, etc.
 
 dfp = pd.read_csv('playerStatsUnparsed.csv').loc[:,:]
 dfm = pd.read_csv('matchesNoCO.csv')
@@ -31,7 +32,6 @@ for mid in set(dfp['MatchID']):
     dfp.reset_index(inplace=True, drop=True)
     if not mid in matchset:
         dfp = dfp.drop(dfp[dfp.MatchID == mid].index)
-
 
 print("no. before dropping unranked", len1, "after", dfp.shape[0])
 

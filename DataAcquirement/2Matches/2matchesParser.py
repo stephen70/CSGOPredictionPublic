@@ -1,6 +1,8 @@
 
 import csv;import datetime as dt;import math;import numpy as np;import pandas as pd;import timer
 
+# renames columns of the scraped data, converts date into days since match, drops samples with na values, adds ranking points at time of match, and more
+
 pd.set_option('display.width', 10000)
 myTimer = timer.timer()
 

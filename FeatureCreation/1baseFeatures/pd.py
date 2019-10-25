@@ -3,6 +3,8 @@ from scipy.stats import *; from sklearn.metrics import *;import statsmodels.api 
 from sklearn.preprocessing import StandardScaler
 matches = pd.read_csv("../../FeatureCreation/1BaseFeatures/matches.csv")
 
+# creates feature for differenc ein ranking points at time of match
+
 def addpd(df):
     t1p = int(df['p1'])
     t2p = int(df['p2'])

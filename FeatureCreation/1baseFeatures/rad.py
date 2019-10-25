@@ -4,7 +4,7 @@ p = print;pd.set_option('display.width',20000);import timer
 
 myTimer = timer.timer()
 
-# finds percentage of T rounds won * percentage of CT rounds won over all matches played in the last timeSpan days
+# finds average rating and rating standard deviation won over all matches played in the last timeSpan days, features called rad and radstd
 timeSpan = 120
 noProcesses = 7
 

@@ -1,7 +1,9 @@
 import math; import numpy as np; import pandas as pd; from ast import literal_eval; p=print
 pd.set_option('display.width',20000)
 
-# calculates number of matches played over last appSpan days. ignores maps played in current match
+# calculates number of matches played over last appSpan days. ignores maps played in current match.
+# creates app feature, a measure of how often a team plays. if a team is new, this is low and contains information about how new a team are.
+
 df = pd.read_csv("matches.csv").loc[:,:]
 df.reset_index(drop=False, inplace=True)
 # app decay removed

@@ -5,6 +5,7 @@ p = print;pd.set_option('display.width',20000);import timer
 myTimer = timer.timer()
 
 # finds percentage of rounds won on map in last mapSpan days, returns 0.5 if less than minMaps played on that map
+
 mapSpan = 120
 minMaps = 2
 noProcesses = 7

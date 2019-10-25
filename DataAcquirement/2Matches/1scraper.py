@@ -5,6 +5,8 @@ import time
 import numpy as np
 import datetime;import pandas as pd
 
+# scrapes the match data, and the stats for each player.
+
 class MatchScraper:
 
     def __init__(self, link):
