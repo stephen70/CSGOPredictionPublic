@@ -1,6 +1,6 @@
 # Sports Prediction for CS:GO
 
-An attempt at predicting match winners for the team-based game CS:GO using various machine learning/statistical learning methods, including linear regression, logistic regression, linear discriminant analysis, random forests and neural networks. A re-write to fix bugs and reduce feature generation time is currently underway. The old model classified winners with an accuracy of 67% - the current untuned model is at 61%. See histogram.png for an example of how intertwined the win/loss classes are.
+An attempt at predicting match winners for the team-based game CS:GO using various machine learning/statistical learning methods, including logistic regression, LDA, random forests and neural networks. A re-write to fix bugs and reduce feature generation time is currently underway. The old model classified winners with an accuracy of 67% - the current untuned model is at 61%. See histogram.png for an example of how intertwined the win/loss classes are.
 
 CO = common opponents, H2H = head to head, Completeness = % of T rounds won * % of CT rounds won
 
