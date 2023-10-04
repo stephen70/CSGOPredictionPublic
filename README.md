@@ -34,4 +34,4 @@ Features (to re-write or add):
 - Interaction terms
 - Standard deviation terms
 
-All database files have been removed out of respect for the company who collects it. A small sample is available in the root directory.
+Source data files have been withheld, except for a small sample that is available in the root directory.
